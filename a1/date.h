@@ -5,6 +5,7 @@ class Date {
   public:
     Date();
     Date(int y, int m, int d);
+    void setDate(int y, int m, int d);
     void print();
     bool lessThan(Date&);
 

@@ -13,6 +13,12 @@ Date::Date(int y, int m, int d) {
   day = d;
 }
 
+void Date::setDate(int y, int m, int d) {
+  year = y;
+  month = m;
+  day = d;
+}
+
 void Date::print() {
   std::cout << year << "-" << month << "-" << day << std::endl;
 }
