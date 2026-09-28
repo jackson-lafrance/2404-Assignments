@@ -14,7 +14,7 @@ Date::Date(int y, int m, int d) {
 }
 
 void Date::print() {
-  std::cout << day << "-" << month << "-" << year << std::endl;
+  std::cout << year << "-" << month << "-" << day << std::endl;
 }
 
 bool Date::lessThan(Date& d) {
