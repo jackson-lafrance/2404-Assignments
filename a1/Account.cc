@@ -13,26 +13,26 @@ int Account::id() {
 	return id_;
 }
 
-bool Account::credit(float amt) {
-	if (amt <= 0) {
+bool Account::credit(float amount) {
+	if (amount <= 0) {
 		std::cout << "CREDIT AMOUNT MUST BE POSITIVE!!!!!";
 		return false;
 	}
-	balance_ += amt;
+	balance_ += amount;
 	return true;
 }	
 
-bool Account::debit(float amt) {
-	if (amt <= 0) {
+bool Account::debit(float amount) {
+	if (amount <= 0) {
 		std::cout << "DEBIT AMOUNT MUST BE POSITIVE!!!!!";
 		return false;
 	}
 
-	if (amt > balance) {
+	if (amount > balance_) {
 		std::cout << "BALANCE TOO LOW!!!!!";
 		return false;
 	}
-	balance_ -= amt;
+	balance_ -= amount;
 	return true;
 }
 

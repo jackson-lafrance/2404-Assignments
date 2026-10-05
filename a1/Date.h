@@ -7,12 +7,12 @@ class Date {
     Date(int y, int m, int d);
     void setDate(int y, int m, int d);
     void print();
-    bool lessThan(Date&);
+    bool lessThan(Date& date);
 
   private:
-      int year;
-      int month;
-      int day;
-}
+      int year_;
+      int month_;
+      int day_;
+};
 
 #endif // DATE_H

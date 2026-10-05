@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Customer.h"
+#include "Transaction.h"
 #include "defs.h"
 
 class Bank {
@@ -20,7 +21,7 @@ class Bank {
 
 		void addToTrArray(Transaction* arr, int& num_tr, Transaction& new_tr);
 		bool addTransaction(TransactionType t, int acct_id, float amt, int y, int m, int
-d)
+d);
 		void processTransactions();
 
 		void printCustomers();
@@ -37,6 +38,6 @@ d)
 
 		Transaction logged_transactions_[MAX_ARR_SIZE];
 		int num_logged_transactions;
-}
+};
 
 #endif // BANK_H

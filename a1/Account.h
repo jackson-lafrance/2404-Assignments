@@ -5,13 +5,13 @@ class Account {
 	public:
 		Account(int i = 0, int c = 0, float b = 0);
 		int id();
-		bool credit(float);
-		bool debit(float);
+		bool credit(float amount);
+		bool debit(float amount);
 		void print();
 	private:
 		int id_;
 		int customer_id_;
 		float balance_;
-}
+};
 
 #endif // ACCOUNT_H

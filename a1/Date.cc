@@ -2,39 +2,39 @@
 #include <iostream>
 
 Date::Date() {
-  year = 0;
-  month = 0;
-  day = 0;
+  year_ = 0;
+  month_ = 0;
+  day_ = 0;
 }
 
 Date::Date(int y, int m, int d) {
-  year = y;
-  month = m;
-  day = d;
+  year_ = y;
+  month_ = m;
+  day_ = d;
 }
 
 void Date::setDate(int y, int m, int d) {
-  year = y;
-  month = m;
-  day = d;
+  year_ = y;
+  month_ = m;
+  day_ = d;
 }
 
 void Date::print() {
-  std::cout << year << "-" << month << "-" << day << std::endl;
+  std::cout << year_ << "-" << month_ << "-" << day_ << std::endl;
 }
 
-bool Date::lessThan(Date& d) {
-  if (d.year == year) {
-    if (d.month == month) {
-      if (d.day == day) {
+bool Date::lessThan(Date &d) {
+  if (d.year_ == year_) {
+    if (d.month_ == month_) {
+      if (d.day_ == day_) {
         return false;
       }
-      
-      return d.day > day;
+
+      return d.day_ > day_;
     }
 
-    return d.month > month;
-  } 
+    return d.month_ > month_;
+  }
 
-  return d.year > year;
+  return d.year_ > year_;
 }
