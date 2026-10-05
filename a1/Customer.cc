@@ -52,5 +52,5 @@ Account& Customer::findAccount(int acctId) {
 }
 
 void Customer::print() {
-	std::cout << "customer print"
+	std::cout << "customer print";
 }

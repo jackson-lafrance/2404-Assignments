@@ -30,12 +30,13 @@ bool Account::debit(float amt) {
 
 	if (amt > balance) {
 		std::cout << "BALANCE TOO LOW!!!!!";
+		return false;
 	}
 	balance_ -= amt;
 	return true;
 }
 
 void Account::print() {
-	std::cout << "balls";
+	std::cout << "Account print";
 	return;
 }
