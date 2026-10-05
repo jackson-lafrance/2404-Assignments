@@ -1,9 +1,6 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-#include <iostream>
-#include <iomanip>
-
 class Account {
 	public:
 		Account(int i = 0, int c = 0, float b = 0);
