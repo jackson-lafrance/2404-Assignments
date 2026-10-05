@@ -12,15 +12,15 @@ int Customer::id() { return id_; }
 
 bool Customer::addAccount(int acct_id, float init_bal) {
   if (acct_id < 0) {
-    std::cout << "ACCOUNT ID CANNOT BE NEGATIVE";
+    std::cout << "MAYBE WE SHOULD'VE MADE ID A SIZE_T... ID MUST BE >= 0";
   }
 
   if (init_bal < 0) {
-    std::cout << "ACCOUNT BALANCE CANNOT BE NEGATIVE";
+    std::cout << "WE DON'T OFFER LOANS HERE BUDDY!!! BALANCE MUST BE >= 0";
   }
 
   if (num_accounts_ >= MAX_ARR_SIZE) {
-    std::cout << "CUSTOMER " << id_ << " IS AT MAX ACCOUNT CAPACITY!!!!!";
+    std::cout << "YOU REALLY NEED THAT MANY ACCOUNTS??? ACCOUNT ARRAY FULL";
     return false;
   }
 
@@ -45,7 +45,7 @@ Account &Customer::findAccount(int acct_id) {
     }
   }
 
-  std::cout << "TERMINAL ERROR: ACCOUNT NOT FOUND!!!!!";
+  std::cout << "I SWEAR I WAS JUST LOOKING AT IT!!! ACCOUNT NOT FOUND ERROR";
   exit(1);
 }
 

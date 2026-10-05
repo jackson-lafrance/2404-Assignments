@@ -8,7 +8,7 @@
 
 class Bank {
 	public:
-		Bank(std::string bank_name);
+		Bank(std::string bank_name = "");
 		void name(std::string bank_name);
 
 		bool addCustomer(int cust_id, std::string cust_name);
@@ -34,10 +34,10 @@ d);
 		int num_customers_;
 
 		Transaction pending_transactions_[MAX_ARR_SIZE];
-		int num_pending_transactions;
+		int num_pending_transactions_;
 
 		Transaction logged_transactions_[MAX_ARR_SIZE];
-		int num_logged_transactions;
+		int num_logged_transactions_;
 };
 
 #endif // BANK_H
