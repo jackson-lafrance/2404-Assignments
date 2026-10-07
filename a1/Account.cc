@@ -15,7 +15,7 @@ int Account::id() {
 
 bool Account::credit(float amount) {
 	if (amount <= 0) {
-		std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0";
+		std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0" << std::endl;
 		return false;
 	}
 
@@ -25,12 +25,12 @@ bool Account::credit(float amount) {
 
 bool Account::debit(float amount) {
 	if (amount <= 0) {
-		std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE > 0";
+		std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE > 0" << std::endl;
 		return false;
 	}
 
 	if (amount > balance_) {
-		std::cout << "I DON'T THINK YOU CAN AFFORD THAT!!! DEBIT AMOUNT MUST BE <= BALANCE";
+		std::cout << "I DON'T THINK YOU CAN AFFORD THAT!!! DEBIT AMOUNT MUST BE <= BALANCE" << std::endl;
 		return false;
 	}
 
@@ -39,6 +39,6 @@ bool Account::debit(float amount) {
 }
 
 void Account::print() {
-	std::cout << "Account print";
+	std::cout << "Account print" << std::endl;
 	return;
 }

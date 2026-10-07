@@ -3,6 +3,7 @@
 Transaction::Transaction(TransactionType t, int i, float a, int y, int m, int d) : date_(y, m, d) {
 	account_id_ = i;
 	amount_ = a;
+  transaction_type_ = t;
 }
 
 int Transaction::account_id() {
@@ -18,5 +19,5 @@ bool Transaction::process(Account& acct_id) {
 }
 
 void Transaction::print() {
-	std::cout << "transaction print";
+	std::cout << "transaction print" << std::endl;
 }
