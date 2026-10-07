@@ -1,4 +1,5 @@
 #include "Date.h"
+#include <iomanip>
 #include <iostream>
 
 Date::Date() {
@@ -20,7 +21,8 @@ void Date::setDate(int y, int m, int d) {
 }
 
 void Date::print() {
-  std::cout << year_ << "-" << month_ << "-" << day_ << std::endl;
+  std::cout << std::setfill('0') << std::setw(4) << year_ << "-" << std::setw(2)
+            << month_ << "-" << std::setw(2) << day_ << std::setfill(' ');
 }
 
 bool Date::lessThan(Date &d) {

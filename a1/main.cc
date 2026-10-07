@@ -17,7 +17,7 @@ int main() {
       break;
     case 2: {
       int type = -1;
-      while (type != 1 || type != 2) {
+      while (!(type == 1 || type == 2)) {
         cout << endl << "NEW TRANSACTION" << endl;
         cout << "  (1) Credit" << endl;
         cout << "  (2) Debit" << endl;

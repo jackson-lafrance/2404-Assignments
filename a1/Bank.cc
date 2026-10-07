@@ -2,8 +2,8 @@
 #include "defs.h"
 
 Bank::Bank(std::string bank_name)
-    : num_customers_(0), num_pending_transactions_(0),
-      num_logged_transactions_(0), name_(bank_name) {};
+    : name_(bank_name), num_customers_(0), num_pending_transactions_(0),
+      num_logged_transactions_(0) {};
 
 void Bank::name(std::string bank_name) {
   name_ = bank_name;
@@ -57,7 +57,7 @@ bool Bank::addAccount(int acct_id, int cust_id, float init_bal) {
     if (findCustomer(cust_id).addAccount(acct_id, init_bal))
       return true;
 
-  std::cout << "CUSTOMER: " << cust_id << "NOT FOUND!!!" << std::endl;
+  std::cout << "CUSTOMER: " << cust_id << " NOT FOUND!!!" << std::endl;
   return false;
 }
 
@@ -108,7 +108,7 @@ void Bank::addToTrArray(Transaction *arr, int &num_tr, Transaction &new_tr) {
 bool Bank::addTransaction(TransactionType t, int acct_id, float amt, int y,
                           int m, int d) {
   if (num_pending_transactions_ >= MAX_ARR_SIZE) {
-    std::cout << "CAN WE PROCESS SOME OF THESE???"
+    std::cout << "CAN WE PROCESS SOME OF THESE??? "
                  "PENDING TRANSACTION ARRAY FULL"
               << std::endl;
     return false;
@@ -128,23 +128,44 @@ void Bank::processTransactions() {
   int j{0};
 
   for (int i{0}; i < num_pending_transactions_; ++i) {
-    Transaction tr;
+    Transaction tr = pending_transactions_[i];
     Date tr_date = tr.date();
 
     if (!c_date.lessThan(tr_date)) {
       int acct_id = tr.account_id();
 
       if (containsAccount(acct_id)) {
-        tr.process(findAccount(acct_id));
-        addToTrArray(logged_transactions_, num_logged_transactions_, tr);
+        if (tr.process(findAccount(acct_id))) {
+          addToTrArray(logged_transactions_, num_logged_transactions_, tr);
+        }
       } else
-        std::cout << "ACCOUNT " << acct_id << "NOT IN BANK!!" << std::endl;
-    } else
+        std::cout << "ACCOUNT " << acct_id << " NOT FOUND!!" << std::endl;
+    } else {
       pending_transactions_[j++] = tr;
+    }
   }
+
+  num_pending_transactions_ = j;
 }
 
-void Bank::printCustomers() {};
-void Bank::printTransactions(Transaction *arr, int num_tr) {};
-void Bank::printPendingTr() {};
-void Bank::printLoggedTr() {};
+void Bank::printCustomers() {
+  if (num_customers_ == 0)
+    std::cout << std::setw(20) << "-- NO CUSTOMERS" << std::endl;
+  for (int i{0}; i < num_customers_; ++i)
+    customers_[i].print();
+};
+
+void Bank::printTransactions(Transaction *arr, int num_tr) {
+  if (num_tr == 0)
+    std::cout << std::setw(20) << "-- NO TRANSACTIONS" << std::endl;
+  for (int i{0}; i < num_tr; ++i)
+    arr[i].print();
+};
+
+void Bank::printPendingTr() {
+  printTransactions(pending_transactions_, num_pending_transactions_);
+}
+
+void Bank::printLoggedTr() {
+  printTransactions(logged_transactions_, num_logged_transactions_);
+};
