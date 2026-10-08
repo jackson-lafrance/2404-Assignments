@@ -2,7 +2,8 @@
 #include "defs.h"
 
 int main() {
-  Bank riverBank("River Bank");
+  Bank riverBank;
+  riverBank.name("River Bank");
 
   loadCustomerData(riverBank);
   loadTransactionData(riverBank);
@@ -47,9 +48,9 @@ int main() {
 
       if (riverBank.addTransaction(type == 1 ? TR_CREDIT : TR_DEBIT, acct_id,
                                    amt, y, m, d))
-        cout << "SUCCESSFULLY ADDED TRANSACTION";
+        cout << "SUCCESSFULLY ADDED TRANSACTION" << endl;
       else
-        cout << "FAILED TO ADD TRANSACTION";
+        cout << "FAILED TO ADD TRANSACTION" << endl;
 
       break;
     }

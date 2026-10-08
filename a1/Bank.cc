@@ -16,14 +16,19 @@ bool Bank::addCustomer(int cust_id, std::string cust_name) {
     return false;
   }
 
+  if (containsCustomer(cust_id)) {
+    std::cout << "DEMENTIA ERROR!!! CUSTOMER ALREADY EXISTS" << std::endl;
+    return false;
+  }
+
   if (num_customers_ >= MAX_ARR_SIZE) {
     std::cout
         << "THIS TOWN AIN'T BIG ENOUGH FOR BOTH OF US!!! CUSTOMER ARRAY FULL"
         << std::endl;
     return false;
   }
-
-  customers_[num_customers_++] = Customer(cust_id, cust_name);
+  Customer newCustomer(cust_id, cust_name);
+  customers_[num_customers_++] = newCustomer;
   return true;
 };
 
@@ -52,9 +57,14 @@ bool Bank::addAccount(int acct_id, int cust_id, float init_bal) {
     return false;
   }
 
-  if (containsCustomer(cust_id))
-    if (findCustomer(cust_id).addAccount(acct_id, init_bal))
-      return true;
+  if (containsCustomer(cust_id)) {
+    if (findCustomer(cust_id).containsAccount(acct_id)) {
+      std::cout << "ACCOUNT " << acct_id << " ALREADY EXISTS!!!" << std::endl;
+      return false;
+    } else {
+      return findCustomer(cust_id).addAccount(acct_id, init_bal);
+    }
+  }
 
   std::cout << "CUSTOMER: " << cust_id << " NOT FOUND!!!" << std::endl;
   return false;
@@ -111,6 +121,11 @@ bool Bank::addTransaction(TransactionType t, int acct_id, float amt, int y,
     return false;
   }
 
+  if (t != TR_CREDIT && t != TR_DEBIT) {
+    std::cout << "ILLEGAL TRANSACTION TYPE" << std::endl;
+    return false;
+  }
+
   if (num_pending_transactions_ >= MAX_ARR_SIZE) {
     std::cout << "CAN WE PROCESS SOME OF THESE??? "
                  "PENDING TRANSACTION ARRAY FULL"
@@ -135,7 +150,7 @@ void Bank::processTransactions() {
     Transaction tr = pending_transactions_[i];
     Date tr_date = tr.date();
 
-    if (!c_date.lessThan(tr_date)) {
+    if (!c_date.lessThan(tr_date) && num_logged_transactions_ < MAX_ARR_SIZE) {
       int acct_id = tr.account_id();
 
       if (containsAccount(acct_id)) {

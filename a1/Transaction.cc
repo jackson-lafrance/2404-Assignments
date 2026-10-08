@@ -14,7 +14,7 @@ Date Transaction::date() { return date_; }
 bool Transaction::process(Account &acct_id) {
   if (transaction_type_ == TR_CREDIT) {
     if (acct_id.credit(amount_))
-      return acct_id.credit(amount_);
+      return true;
 
     std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0"
               << std::endl;
@@ -28,6 +28,8 @@ bool Transaction::process(Account &acct_id) {
               << std::endl;
   }
 
+
+  std::cout << "FAILED TO PROCESS ILLEGAL TRANSACTION";
   return false;
 }
 

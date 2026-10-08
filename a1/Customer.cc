@@ -18,6 +18,11 @@ bool Customer::addAccount(int acct_id, float init_bal) {
     return false;
   }
 
+  if (containsAccount(acct_id)) {
+    std::cout << "DEMENTIA ERROR!!! ACCOUNT ALREADY EXISTS" << std::endl;
+    return false;
+  }
+
   if (init_bal < 0) {
     std::cout << "WE DON'T OFFER LOANS HERE BUDDY!!! BALANCE MUST BE >= 0"
               << std::endl;
@@ -29,8 +34,8 @@ bool Customer::addAccount(int acct_id, float init_bal) {
               << std::endl;
     return false;
   }
-
-  accounts_[num_accounts_++] = Account(acct_id, id_, init_bal);
+  Account newAccount(acct_id, id_, init_bal);
+  accounts_[num_accounts_++] = newAccount;
   return true;
 }
 
