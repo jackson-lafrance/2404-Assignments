@@ -1,5 +1,4 @@
 #include "Bank.h"
-#include "defs.h"
 
 Bank::Bank(std::string bank_name)
     : name_(bank_name), num_customers_(0), num_pending_transactions_(0),
@@ -107,6 +106,11 @@ void Bank::addToTrArray(Transaction *arr, int &num_tr, Transaction &new_tr) {
 
 bool Bank::addTransaction(TransactionType t, int acct_id, float amt, int y,
                           int m, int d) {
+  if (!containsAccount(acct_id)) {
+    std::cout << "ACCOUNT " << acct_id << " NOT FOUND" << std::endl;
+    return false;
+  }
+
   if (num_pending_transactions_ >= MAX_ARR_SIZE) {
     std::cout << "CAN WE PROCESS SOME OF THESE??? "
                  "PENDING TRANSACTION ARRAY FULL"

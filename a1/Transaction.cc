@@ -1,5 +1,4 @@
 #include "Transaction.h"
-#include "defs.h"
 
 Transaction::Transaction(TransactionType t, int i, float a, int y, int m, int d)
     : date_(y, m, d) {
@@ -14,18 +13,16 @@ Date Transaction::date() { return date_; }
 
 bool Transaction::process(Account &acct_id) {
   if (transaction_type_ == TR_CREDIT) {
-    if (acct_id.credit(amount_)) {
-      return true;
-    }
+    if (acct_id.credit(amount_))
+      return acct_id.credit(amount_);
 
     std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0"
               << std::endl;
   }
 
   if (transaction_type_ == TR_DEBIT) {
-    if (acct_id.debit(amount_)) {
+    if (acct_id.debit(amount_))
       return true;
-    }
 
     std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE <= BALANCE AND > 0"
               << std::endl;
@@ -35,13 +32,11 @@ bool Transaction::process(Account &acct_id) {
 }
 
 void Transaction::print() {
-  std::cout << account_id_;
-  std::cout << " :: ";
-  std::cout << (transaction_type_ == TR_DEBIT    ? "Debit "
+  std::cout << account_id_ << " :: " << std::left << std::setw(6)
+            << (transaction_type_ == TR_DEBIT    ? "Debit"
                 : transaction_type_ == TR_CREDIT ? "Credit"
-                                                 : "Other ")
-            << std::setw(5) << ":: ";
+                                                 : "Other")
+            << std::right << " :: ";
   date_.print();
   std::cout << " :: $" << std::setw(8) << amount_ << endl;
-  ;
 }

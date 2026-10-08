@@ -15,11 +15,13 @@ bool Customer::addAccount(int acct_id, float init_bal) {
   if (acct_id < 0) {
     std::cout << "MAYBE WE SHOULD'VE MADE ID A SIZE_T... ID MUST BE >= 0"
               << std::endl;
+    return false;
   }
 
   if (init_bal < 0) {
     std::cout << "WE DON'T OFFER LOANS HERE BUDDY!!! BALANCE MUST BE >= 0"
               << std::endl;
+    return false;
   }
 
   if (num_accounts_ >= MAX_ARR_SIZE) {

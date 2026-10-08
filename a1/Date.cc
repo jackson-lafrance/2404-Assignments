@@ -26,17 +26,8 @@ void Date::print() {
 }
 
 bool Date::lessThan(Date &d) {
-  if (d.year_ == year_) {
-    if (d.month_ == month_) {
-      if (d.day_ == day_) {
-        return false;
-      }
-
-      return d.day_ > day_;
-    }
-
-    return d.month_ > month_;
-  }
-
-  return d.year_ > year_;
+  if (d.year_ != year_) return year_ < d.year_;
+  if (d.month_ != month_) return month_ < d.month_;
+  if (d.day_ != day_) return day_ < d.day_;
+  return false;
 }

@@ -32,7 +32,7 @@ int main() {
         cin >> acct_id;
       }
 
-      int amt = -1;
+      float amt = -1.0f;
       while (amt <= 0) {
         cout << endl << "NEW TRANSACTION" << endl;
         cout << "Please enter the amount you wish to "

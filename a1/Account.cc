@@ -30,8 +30,7 @@ bool Account::debit(float amount) {
 }
 
 void Account::print() {
-  std::cout << std::setw(6) << id_;
-  std::cout << std::setw(6) << customer_id_ << ":  ";
-  std::cout << "$" << std::setw(8) << balance_ << std::endl;
+  std::cout << std::left << std::setw(8) << id_ << std::setw(6) << customer_id_
+            << ":  $" << std::setw(8) << balance_ << std::endl;
   return;
 }
