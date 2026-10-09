@@ -7,7 +7,7 @@
 
 class Customer {
 	public:
-		Customer(int i = 0, std::string n = "");
+		Customer(int i = 0, const std::string &n = "");
 		int id();
 		bool addAccount(int acct_id, float init_bal);
 		bool containsAccount(int acct_id);

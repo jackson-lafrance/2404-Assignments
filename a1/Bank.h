@@ -8,8 +8,8 @@
 
 class Bank {
 	public:
-		Bank(std::string bank_name = "");
-		void name(std::string bank_name);
+		Bank(const std::string &bank_name = "");
+		void name(const std::string &bank_name);
 
 		bool addCustomer(int cust_id, std::string cust_name);
 		bool containsCustomer(int cust_id);

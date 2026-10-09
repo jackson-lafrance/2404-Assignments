@@ -16,7 +16,7 @@ bool Transaction::process(Account &acct_id) {
     if (acct_id.credit(amount_))
       return true;
 
-    std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0"
+    std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0 (" << acct_id.id() << ")"
               << std::endl;
     return false;
   }
@@ -25,12 +25,14 @@ bool Transaction::process(Account &acct_id) {
     if (acct_id.debit(amount_))
       return true;
 
-    std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE <= BALANCE AND > 0"
-              << std::endl;
+    std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE <= BALANCE AND > 0 ("
+              << acct_id.id() << ")" << std::endl;
     return false;
   }
 
-  std::cout << "FAILED TO PROCESS ILLEGAL TRANSACTION";
+  std::cout << "FAILED TO PROCESS ILLEGAL TRANSACTION (" << acct_id.id() << ")"
+            << std::endl;
+  ;
   return false;
 }
 

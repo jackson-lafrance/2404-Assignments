@@ -1,10 +1,10 @@
 #include "Bank.h"
 
-Bank::Bank(std::string bank_name)
+Bank::Bank(const std::string &bank_name)
     : name_(bank_name), num_customers_(0), num_pending_transactions_(0),
       num_logged_transactions_(0) {};
 
-void Bank::name(std::string bank_name) {
+void Bank::name(const std::string &bank_name) {
   name_ = bank_name;
   return;
 }
@@ -155,7 +155,7 @@ void Bank::processTransactions() {
       int acct_id = tr.account_id();
 
       if (containsAccount(acct_id)) {
-        if (num_logged_transactions_ > MAX_ARR_SIZE) {
+        if (num_logged_transactions_ >= MAX_ARR_SIZE) {
           std::cout << "LOGGED TRANSACTION ARRAY FULL" << std::endl;
         } else if (tr.process(findAccount(acct_id))) {
           addToTrArray(logged_transactions_, num_logged_transactions_, tr);

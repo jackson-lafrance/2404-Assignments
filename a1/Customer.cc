@@ -3,10 +3,7 @@
 #include <iomanip>
 #include <iostream>
 
-Customer::Customer(int i, std::string n) {
-  id_ = i;
-  name_ = n;
-  num_accounts_ = 0;
+Customer::Customer(int i, const std::string &n): id_(i), name_(n), num_accounts_(0) {
 }
 
 int Customer::id() { return id_; }
