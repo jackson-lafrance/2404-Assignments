@@ -1,3 +1,20 @@
+/*
+ * Class: Transaction
+ * Purpose: Represents a dated credit or debit operation to be performed on one bank account.
+ *
+ * Data members:
+ *   transaction_type_ - Indicates whether the operation is a credit or debit
+ *   account_id_       - Identifier of the affected account
+ *   amount_           - Amount of the transaction
+ *   date_             - Date on which the transaction is scheduled
+ *
+ * Member functions:
+ *   Transaction() - Initializes the type, account, amount, and date
+ *   account_id()  - Returns the affected account's identifier
+ *   date()        - Returns a reference to the transaction date
+ *   process()     - Applies the credit or debit to a supplied account
+ *   print()       - Prints all transaction information
+ */
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 

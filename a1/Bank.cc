@@ -9,7 +9,7 @@ void Bank::name(const std::string &bank_name) {
   return;
 }
 
-bool Bank::addCustomer(int cust_id, std::string cust_name) {
+bool Bank::addCustomer(int cust_id, const std::string &cust_name) {
   if (cust_id < 0) {
     std::cout << "STOP BEING SO NEGATIVE!!! CUSTOMER ID MUST BE >= 0"
               << std::endl;

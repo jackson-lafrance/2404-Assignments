@@ -1,3 +1,21 @@
+/*
+ * Class: Customer
+ * Purpose: Represents a bank customer and the collection of accounts owned by that customer
+ *
+ * Data members:
+ *   id_           - Id of the customer
+ *   name_         - Customer's name
+ *   accounts_     - Array containing the customer's accounts
+ *   num_accounts_ - Number of accounts currently stored in accounts_.
+ *
+ * Member functions:
+ *   Customer()       - Sets up the customer's identifier and name
+ *   id()             - Returns the customer identifier
+ *   addAccount()     - Creates and appends an account
+ *   containsAccount() - Says whether the customer owns an account
+ *   findAccount()    - Gives a reference to a requested account
+ *   print()          - Prints the customer and all owned accounts
+ */
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 

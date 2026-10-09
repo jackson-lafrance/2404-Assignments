@@ -1,0 +1,48 @@
+COMP2404 Assignment 1 - Bank Transaction Manager
+
+Author
+Jackson Lafrance
+
+Purpose
+This program manages customers, accounts, and transactions for a bank.
+
+Source Files
+Account.cc      Implements the Account class
+Bank.cc         Implements the Bank class
+Customer.cc     Implements the Customer class
+Date.cc         Implements the Date class
+Transaction.cc  Implements the Transaction class
+main.cc         Implements the main control flow and the provided global stuff
+
+Header Files
+Account.h      Declares the Account class
+Bank.h         Declares the Bank class
+Customer.h     Declares the Customer class
+Date.h         Declares the Date class
+Transaction.h  Declares the Transaction class
+defs.h         Declares all the constants stuff
+
+Other Files
+Makefile compiles and links the program and provides the clean and also Readme is this one
+
+Data Files
+None
+
+Compilation
+In the directory containing the program files, run:
+
+    make
+
+This separately compiles each source file and links the resulting object files
+to create an executable named a1. The program requires a C++11-compatible g++
+compiler and no external libraries.
+
+Launching
+Run the program with:
+
+    ./a1 or make run
+
+Cleaning
+To remove the .o files, run:
+
+    make clean

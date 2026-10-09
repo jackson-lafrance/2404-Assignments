@@ -1,3 +1,18 @@
+/*
+ * Class: Date
+ * Purpose: Stores a calendar date and provides operations for setting, comparing, and printing that date
+ *
+ * Data members:
+ *   year_  - year component
+ *   month_ - Month component
+ *   day_   - Day component
+ *
+ * Member functions:
+ *   Date()     - Initializes an empty or specified date
+ *   setDate()  - Replaces the stored year, month, and day
+ *   print()    - Prints the date in year-month-day format
+ *   lessThan() - Reports whether this date occurs before another date
+ */
 #ifndef DATE_H
 #define DATE_H
 
