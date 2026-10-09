@@ -1,5 +1,6 @@
 #include "Bank.h"
 #include "defs.h"
+#include <ctime>
 
 int main() {
   Bank riverBank;

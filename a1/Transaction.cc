@@ -9,7 +9,7 @@ Transaction::Transaction(TransactionType t, int i, float a, int y, int m, int d)
 
 int Transaction::account_id() { return account_id_; }
 
-Date Transaction::date() { return date_; }
+Date &Transaction::date() { return date_; }
 
 bool Transaction::process(Account &acct_id) {
   if (transaction_type_ == TR_CREDIT) {
@@ -18,6 +18,7 @@ bool Transaction::process(Account &acct_id) {
 
     std::cout << "I DON'T THINK YOU WANNA DO THAT!!! CREDIT AMOUNT MUST BE > 0"
               << std::endl;
+    return false;
   }
 
   if (transaction_type_ == TR_DEBIT) {
@@ -26,8 +27,8 @@ bool Transaction::process(Account &acct_id) {
 
     std::cout << "NICE TRY BUDDY!!! DEBIT AMOUNT MUST BE <= BALANCE AND > 0"
               << std::endl;
+    return false;
   }
-
 
   std::cout << "FAILED TO PROCESS ILLEGAL TRANSACTION";
   return false;
@@ -40,5 +41,6 @@ void Transaction::print() {
                                                  : "Other")
             << std::right << " :: ";
   date_.print();
-  std::cout << " :: $" << std::setw(8) << amount_ << endl;
+  std::cout << " :: $" << std::setw(8) << std::fixed << std::setprecision(2)
+            << amount_ << endl;
 }

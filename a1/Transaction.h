@@ -9,7 +9,7 @@ class Transaction {
 	public:
 		Transaction(TransactionType t = TR_OTHER, int i = 0, float a = 0, int y = 2007, int m = 6, int d = 5);
 		int account_id();
-		Date date();
+		Date &date();
 		bool process(Account& account);
 		void print();
 	private:

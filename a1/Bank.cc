@@ -58,7 +58,7 @@ bool Bank::addAccount(int acct_id, int cust_id, float init_bal) {
   }
 
   if (containsCustomer(cust_id)) {
-    if (findCustomer(cust_id).containsAccount(acct_id)) {
+    if (containsAccount(acct_id)) {
       std::cout << "ACCOUNT " << acct_id << " ALREADY EXISTS!!!" << std::endl;
       return false;
     } else {
@@ -96,9 +96,9 @@ void Bank::addToTrArray(Transaction *arr, int &num_tr, Transaction &new_tr) {
     return;
   }
 
-  Date newDate = new_tr.date();
+  Date &newDate = new_tr.date();
   for (int i{0}; i < num_tr; ++i) {
-    Date existingDate = arr[i].date();
+    Date &existingDate = arr[i].date();
 
     if (newDate.lessThan(existingDate)) {
       for (int j{num_tr}; j > i; --j)
@@ -147,14 +147,17 @@ void Bank::processTransactions() {
   int j{0};
 
   for (int i{0}; i < num_pending_transactions_; ++i) {
-    Transaction tr = pending_transactions_[i];
-    Date tr_date = tr.date();
 
-    if (!c_date.lessThan(tr_date) && num_logged_transactions_ < MAX_ARR_SIZE) {
+    Transaction tr = pending_transactions_[i];
+    Date &tr_date = tr.date();
+
+    if (!c_date.lessThan(tr_date)) {
       int acct_id = tr.account_id();
 
       if (containsAccount(acct_id)) {
-        if (tr.process(findAccount(acct_id))) {
+        if (num_logged_transactions_ > MAX_ARR_SIZE) {
+          std::cout << "LOGGED TRANSACTION ARRAY FULL" << std::endl;
+        } else if (tr.process(findAccount(acct_id))) {
           addToTrArray(logged_transactions_, num_logged_transactions_, tr);
         }
       } else
