@@ -29,7 +29,10 @@ void Telco::addMsg(std::string srcNum, std::string destNum, int year, int month,
 
   Msg *msg = new Msg(day, month, year, hours, mins, srcNum, destNum);
 
-  messages_.add(msg);
+  if (!messages_.add(msg)) {
+    delete msg;
+    return;
+  }
 
   if (src != nullptr)
     src->addOutgoing(msg);
