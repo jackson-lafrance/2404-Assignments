@@ -3,14 +3,12 @@
 
 #include "defs.h"
 
-
-class View
-{
-  public:
-    void showMenu(int&);
-    void printStr(string);
-    void readInt(int&);
-    void readStr(string&);
+class View {
+public:
+  void showMenu(int &);
+  void printStr(std::string);
+  void readInt(int &);
+  void readStr(std::string &);
 };
 
-#endif
+#endif // VIEW_H

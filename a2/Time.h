@@ -3,17 +3,16 @@
 
 #include "defs.h"
 
-class Time
-{
-  public:
-    Time(int=0, int=0);
-    bool greaterThan(Time*);
-    void print();
+class Time {
+public:
+  Time(int = 0, int = 0);
+  bool greaterThan(Time *);
+  void print();
 
-  private:
-    int hours;
-    int minutes;
-    int convertToMins();
+private:
+  int hours;
+  int minutes;
+  int convertToMins();
 };
 
-#endif
+#endif // TIME_H

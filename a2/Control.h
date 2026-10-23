@@ -1,13 +1,16 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include "Telco.h"
 
-class Control
-{
-  public:
+class Control {
+public:
+  void launch();
 
-  private:
-
+private:
+  void initData(Telco *telco);
+  void initSubscribers(Telco *telco);
+  void initMsgs(Telco *telco);
 };
 
-#endif
+#endif // CONTROL_H
