@@ -38,7 +38,7 @@ bool MsgArray::add(Msg *msg) {
   return true;
 }
 
-void MsgArray::print() {
+void MsgArray::print() const{
   if (size_ == 0)
     std::cout << "NO MESSAGES!" << std::endl;
   for (int i = 0; i < size_; ++i)
@@ -46,8 +46,8 @@ void MsgArray::print() {
   std::cout << std::endl;
 }
 
-int MsgArray::size() { return size_; }
+int MsgArray::size() const { return size_; }
 
-Msg *MsgArray::get(int index) {
+Msg *MsgArray::get(int index) const {
   return size_ > index && index >= 0 ? elements_[index] : nullptr;
 }

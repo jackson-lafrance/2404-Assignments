@@ -11,13 +11,13 @@ Msg::~Msg() {
   delete time_;
 }
 
-bool Msg::greaterThan(Msg *msg) {
+bool Msg::greaterThan(Msg *msg) const {
   if (date_->equals(msg->date_))
     return time_->greaterThan(msg->time_);
   return date_->greaterThan(msg->date_);
 }
 
-void Msg::print() {
+void Msg::print() const {
   std::cout << "From: " << src_ << std::endl;
   std::cout << "To: " << dest_ << std::endl;
   std::cout << "Date: ";

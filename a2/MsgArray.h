@@ -13,9 +13,9 @@ public:
   void cleanup();
   bool add(Msg *msg);
   bool add(const MsgArray &msgArray);
-  void print();
-  int size();
-  Msg *get(int index);
+  void print() const;
+  int size() const;
+  Msg *get(int index) const;
 
 private:
   Msg *elements_[MAX_ARR_SIZE];
