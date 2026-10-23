@@ -1,9 +1,9 @@
-#include "defs.h"
 #include "Control.h"
+#include "defs.h"
 
-int main()
-{
-
+int main() {
+  Control control;
+  control.launch();
   return 0;
 }
 
@@ -18,18 +18,17 @@ int main()
       input-output:  indexes array
 */
 void selectionSort(int n, int tot[], int indexes[]) {
-   int i, j, max, temp;
-   for (i = 0; i < n - 1; i++) {
-      max = i;
-      for (j = i + 1; j < n; j++)
+  int i, j, max, temp;
+  for (i = 0; i < n - 1; i++) {
+    max = i;
+    for (j = i + 1; j < n; j++)
       if (tot[j] > tot[max])
         max = j;
-      temp = tot[i];
-      tot[i] = tot[max];
-      tot[max] = temp;
-      temp = indexes[i];
-      indexes[i] = indexes[max];
-      indexes[max] = temp;
-   }
+    temp = tot[i];
+    tot[i] = tot[max];
+    tot[max] = temp;
+    temp = indexes[i];
+    indexes[i] = indexes[max];
+    indexes[max] = temp;
+  }
 }
-

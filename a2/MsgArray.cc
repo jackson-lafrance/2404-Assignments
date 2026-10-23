@@ -40,7 +40,7 @@ bool MsgArray::add(Msg *msg) {
 
 void MsgArray::print() const {
   if (size_ == 0)
-    std::cout << "NO MESSAGES!" << std::endl;
+    std::cout << "No messages" << std::endl;
   for (int i = 0; i < size_; ++i)
     elements_[i]->print();
   std::cout << std::endl;

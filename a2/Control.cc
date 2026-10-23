@@ -1,23 +1,46 @@
+#include "Control.h"
 
+Control::Control() : telco_(new Telco()) {}
 
-void Control::initData(Telco* tel)
-{
+Control::~Control() { delete telco_; }
+
+void Control::launch() {
+  initData(telco_);
+
+  int choice = -1;
+
+  while (choice != 0) {
+    view_.showMenu(choice);
+
+    switch (choice) {
+    case 1:
+      telco_->printFrequent(SubscriberType::C_SENDER);
+      break;
+    case 2:
+      telco_->printFrequent(SubscriberType::C_RECEIVER);
+      break;
+    case 3:
+      telco_->printSubscribers();
+      break;
+    }
+  }
+}
+
+void Control::initData(Telco *tel) {
   initSubscribers(tel);
   initMsgs(tel);
 }
 
-void Control::initSubscribers(Telco* tel)
-{
-  tel->addSub("613-999-0000"); 
+void Control::initSubscribers(Telco *tel) {
+  tel->addSub("613-999-0000");
   tel->addSub("613-333-4444");
-  tel->addSub("613-888-9999"); 
+  tel->addSub("613-888-9999");
   tel->addSub("613-111-2222");
   tel->addSub("613-222-3333");
-  tel->addSub("613-444-5555"); 
+  tel->addSub("613-444-5555");
 }
 
-void Control::initMsgs(Telco* tel)
-{
+void Control::initMsgs(Telco *tel) {
   tel->addMsg("613-999-0000", "613-333-4444", 2026, 1, 1, 0, 31);
   tel->addMsg("613-999-0000", "613-222-3333", 2025, 2, 2, 10, 54);
 
@@ -35,4 +58,3 @@ void Control::initMsgs(Telco* tel)
   tel->addMsg("613-444-5555", "613-888-9999", 2026, 3, 10, 15, 22);
   tel->addMsg("613-444-5555", "613-888-7777", 2026, 3, 10, 15, 24);
 }
-

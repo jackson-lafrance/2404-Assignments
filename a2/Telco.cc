@@ -1,7 +1,7 @@
 #include "Telco.h"
 #include <string>
 
-Telco::Telco(const std::string &name) : name_(name) {};
+Telco::Telco(const std::string &name) : name_(name), numSubscribers_(0) {};
 
 Telco::~Telco() {
   messages_.cleanup();
@@ -41,20 +41,41 @@ void Telco::printSubscribers() const {
 }
 
 void Telco::printFrequent(SubscriberType subType) const {
-  int indexes[numSubscribers_];
-  int msgAmounts[numSubscribers_];
+  int indexes[MAX_ARR_SIZE];
+  int msgAmounts[MAX_ARR_SIZE];
 
   for (int i = 0; i < numSubscribers_; ++i) {
     indexes[i] = i;
-    msgAmounts[numSubscribers_] = subType == SubscriberType::C_RECEIVER
-                                      ? subscribers_[i]->inc().size()
-                                      : subscribers_[i]->out().size();
+    msgAmounts[i] = subType == SubscriberType::C_RECEIVER
+                        ? subscribers_[i]->inc().size()
+                        : subscribers_[i]->out().size();
   }
 
   selectionSort(numSubscribers_, msgAmounts, indexes);
 
   for (int i = 0; i < numSubscribers_; ++i) {
-    subscribers_[indexes[i]]->print();
-    subType == SubscriberType::C_RECEIVER ? subscribers_[indexes[i]]->inc().print() : subscribers_[indexes[i]]->out().print();
+    std::cout << "subscriber: " << subscribers_[indexes[i]]->phoneNum()
+              << std::endl;
+    subType == SubscriberType::C_RECEIVER
+        ? subscribers_[indexes[i]]->inc().print()
+        : subscribers_[indexes[i]]->out().print();
   }
+}
+
+bool Telco::findSub(std::string phoneNum, Subscriber **sub) {
+  for (int i{0}; i < numSubscribers_; ++i)
+    if (subscribers_[i]->phoneNum() == phoneNum) {
+      *sub = subscribers_[i];
+      return true;
+    }
+
+  return false;
+}
+
+bool Telco::findSub(std::string phoneNum) {
+  for (int i{0}; i < numSubscribers_; ++i)
+    if (subscribers_[i]->phoneNum() == phoneNum)
+      return true;
+
+  return false;
 }

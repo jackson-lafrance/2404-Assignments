@@ -6,14 +6,9 @@ using namespace std;
 
 Date::Date(int d, int m, int y) {
   setDate(d, m, y);
-  cout << "-- Date ctor: ";
-  print();
 }
 
-Date::~Date() {
-  cout << "-- Date dtor: ";
-  print();
-}
+Date::~Date() {}
 
 void Date::setDate(int d, int m, int y) {
   year_ = ((y > 0) ? y : 0);
