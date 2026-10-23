@@ -7,7 +7,7 @@
 
 #define MAX_ARR_SIZE 256
 
-typedef enum { C_SENDER, C_RECEIVER } SubscriberType;
+enum class SubscriberType { C_SENDER, C_RECEIVER };
 void selectionSort(int, int[], int[]);
 
 #endif // DEFS_H
