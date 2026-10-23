@@ -1,3 +1,22 @@
+/*
+ * Class: Telco
+ * Purpose: Manages the telco subscribers and the primary collection of all messages
+ *
+ * Data members:
+ *   name_           - Name of the telco
+ *   numSubscribers_ - Number of subscribers currently stored
+ *   subscribers_    - Primitive array containing subscriber pointers
+ *   messages_       - Primary collection containing all telco messages
+ *
+ * Member functions:
+ *   Telco()          - Initializes the telco name and subscriber count
+ *   ~Telco()         - Cleans up all messages and subscribers
+ *   addSub()         - Dynamically allocates and adds a subscriber
+ *   addMsg()         - Dynamically allocates and adds a message
+ *   printSubscribers()- Prints every subscriber and their messages
+ *   printFrequent()  - Prints subscribers in order of message frequency
+ *   findSub()        - Finds whether a phone number belongs to a subscriber
+ */
 #ifndef TELCO_H
 #define TELCO_H
 

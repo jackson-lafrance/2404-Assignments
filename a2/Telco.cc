@@ -18,10 +18,13 @@ void Telco::addSub(std::string phoneNumber) {
 
 void Telco::addMsg(std::string srcNum, std::string destNum, int year, int month,
                    int day, int hours, int mins) {
-  Subscriber *src;
-  Subscriber *dest;
+  Subscriber *src = nullptr;
+  Subscriber *dest = nullptr;
 
-  if (!findSub(srcNum, &src) && !findSub(destNum, &dest))
+  bool foundSrc = findSub(srcNum, &src);
+  bool foundDest = findSub(destNum, &dest);
+
+  if (!foundSrc && !foundDest)
     return;
 
   Msg *msg = new Msg(day, month, year, hours, mins, srcNum, destNum);
@@ -63,6 +66,8 @@ void Telco::printFrequent(SubscriberType subType) const {
 }
 
 bool Telco::findSub(std::string phoneNum, Subscriber **sub) {
+  *sub = nullptr;
+
   for (int i{0}; i < numSubscribers_; ++i)
     if (subscribers_[i]->phoneNum() == phoneNum) {
       *sub = subscribers_[i];

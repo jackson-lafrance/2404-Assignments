@@ -4,9 +4,7 @@ using namespace std;
 
 #include "Date.h"
 
-Date::Date(int d, int m, int y) {
-  setDate(d, m, y);
-}
+Date::Date(int d, int m, int y) { setDate(d, m, y); }
 
 Date::~Date() {}
 
@@ -18,7 +16,7 @@ void Date::setDate(int d, int m, int y) {
 
 void Date::print() {
   cout << setfill('0') << setw(4) << year_ << "-" << setfill('0') << setw(2)
-       << month_ << "-" << setfill('0') << setw(2) << day_ << endl;
+       << month_ << "-" << setfill('0') << setw(2) << day_ ;
 }
 
 int Date::lastDayInMonth(int m, int y) {

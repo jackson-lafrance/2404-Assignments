@@ -18,11 +18,10 @@ bool Msg::greaterThan(Msg *msg) const {
 }
 
 void Msg::print() const {
-  std::cout << "From: " << src_ << std::endl;
-  std::cout << "To: " << dest_ << std::endl;
-  std::cout << "Date: ";
   date_->print();
-  std::cout << "Time: ";
+  std::cout << " @ ";
   time_->print();
+  std::cout << ":  From: " << src_;
+  std::cout << "  To: " << dest_;
   std::cout << std::endl;
 }

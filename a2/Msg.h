@@ -1,3 +1,19 @@
+/*
+ * Class: Msg
+ * Purpose: Represents one text message sent from one phone number to another
+ *
+ * Data members:
+ *   src_  - Phone number that sent the message
+ *   dest_ - Phone number that received the message
+ *   date_ - Pointer to the date the message was sent
+ *   time_ - Pointer to the time the message was sent
+ *
+ * Member functions:
+ *   Msg()         - Initializes the phone numbers, date, and time
+ *   ~Msg()        - Cleans up the dynamically allocated date and time
+ *   greaterThan() - Reports whether this message was sent after another message
+ *   print()       - Prints all message information
+ */
 #ifndef MSG_H
 #define MSG_H
 

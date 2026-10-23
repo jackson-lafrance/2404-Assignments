@@ -1,3 +1,20 @@
+/*
+ * Class: MsgArray
+ * Purpose: Stores a collection of message pointers in descending date and time order
+ *
+ * Data members:
+ *   elements_ - Primitive array containing message pointers
+ *   size_     - Number of message pointers currently stored
+ *
+ * Member functions:
+ *   MsgArray() - Initializes an empty message collection
+ *   ~MsgArray()- Leaves the shared messages unchanged
+ *   cleanup()  - Cleans up every message in the collection
+ *   add()      - Adds one message or every message from another collection
+ *   print()    - Prints every message in the collection
+ *   size()     - Returns the number of messages
+ *   get()      - Returns the message at a given index
+ */
 #ifndef MSGARRAY_H
 #define MSGARRAY_H
 

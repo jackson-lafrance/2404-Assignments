@@ -13,7 +13,7 @@ void Subscriber::addIncoming(Msg *msg) { inc_.add(msg); }
 void Subscriber::addOutgoing(Msg *msg) { out_.add(msg); }
 
 void Subscriber::print() const {
-  std::cout << "Subscriber: " << phoneNum_ << std::endl;
+  std::cout << "Subscriber " << phoneNum_ << ":" << std::endl;
 
   MsgArray tmp(inc_);
   tmp.add(out_);
