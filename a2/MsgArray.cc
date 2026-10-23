@@ -1,24 +1,53 @@
 #include <iostream>
 
 #include "MsgArray.h"
+#include "defs.h"
 
-Array::Array() { size = 0; }
+MsgArray::MsgArray() : size_(0) {}
+MsgArray::MsgArray(const MsgArray &msgArray) : size_(0) { add(msgArray); }
+MsgArray::~MsgArray() {}
 
-Array::~Array() {
-  for (int i = 0; i < size; ++i)
-    delete elements[i];
+bool MsgArray::add(const MsgArray &msgArray) {
+  for (int i{0}; i < msgArray.size_; ++i)
+    if (!add(msgArray.elements_[i]))
+      return false;
+
+  return true;
 }
 
-void Array::add(Msg *d) {
-  if (size >= MAX_ARR_SIZE)
-    return;
-
-  elements[size++] = d;
+void MsgArray::cleanup() {
+  for (int i = 0; i < size_; ++i)
+    delete elements_[i];
 }
 
-void Array::print() {
-  cout << endl << "MSG:" << endl;
-  for (int i = 0; i < size; ++i)
-    elements[i]->print();
-  cout << endl;
+bool MsgArray::add(Msg *msg) {
+  if (size_ >= MAX_ARR_SIZE)
+    return false;
+
+  for (int i{size_ - 1}; i >= 0; --i) {
+    if (!msg->greaterThan(elements_[i])) {
+      elements_[i + 1] = msg;
+      ++size_;
+      return true;
+    }
+    elements_[i + 1] = elements_[i];
+  }
+
+  elements_[0] = msg;
+  ++size_;
+  return true;
+}
+
+void MsgArray::print() {
+  if (size_ == 0)
+    std::cout << "NO MESSAGES!" << std::endl;
+  for (int i = 0; i < size_; ++i)
+    elements_[i]->print();
+  std::cout << std::endl;
+}
+
+int MsgArray::size() { return size_; }
+
+Msg *MsgArray::get(int index) {
+  return size_ > index && index >= 0 ? elements_[index] : nullptr;
 }

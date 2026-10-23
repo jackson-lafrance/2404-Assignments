@@ -7,6 +7,8 @@ public:
   ~Date();
   void setDate(int, int, int);
   void print();
+  bool greaterThan(const Date *d);
+  bool equals(const Date *d);
 
 private:
   int day_;
@@ -14,8 +16,6 @@ private:
   int year_;
   int lastDayInMonth(int, int);
   bool leapYear(int);
-  bool greaterThan(const Date *d);
-  bool equals(const Date *d);
 };
 
 #endif // DATE_H

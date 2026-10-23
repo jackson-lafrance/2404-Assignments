@@ -5,16 +5,21 @@
 #include "Msg.h"
 #include "defs.h"
 
-class Array {
+class MsgArray {
 public:
-  Array();
-  ~Array();
-  void add(Msg *d);
+  MsgArray();
+  MsgArray(const MsgArray &msgArray);
+  ~MsgArray();
+  void cleanup();
+  bool add(Msg *msg);
+  bool add(const MsgArray &msgArray);
   void print();
+  int size();
+  Msg *get(int index);
 
 private:
-  Msg *elements[MAX_ARR_SIZE];
-  int size; // number of elements
+  Msg *elements_[MAX_ARR_SIZE];
+  int size_; // number of elements
 };
 
 #endif // MSGARRAY_H
