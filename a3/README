@@ -1,0 +1,50 @@
+COMP2404 Assignment 2 - Telco Message Manager
+
+Author
+Jackson Lafrance
+
+Purpose
+This program manages subscribers and their incoming and outgoing text messages for a telephone company.
+
+Source Files
+Control.cc     Implements the Control class
+Date.cc        Implements the Date class
+Msg.cc         Implements the Msg class
+MsgArray.cc    Implements the MsgArray class
+Subscriber.cc  Implements the Subscriber class
+Telco.cc       Implements the Telco class
+Time.cc        Implements the Time class
+View.cc        Implements the View class
+main.cc        Implements the main control flow and the provided sorting stuff
+
+Header Files
+Control.h     Declares the Control class
+Date.h        Declares the Date class
+Msg.h         Declares the Msg class
+MsgArray.h    Declares the MsgArray class
+Subscriber.h Declares the Subscriber class
+Telco.h       Declares the Telco class
+Time.h        Declares the Time class
+View.h        Declares the View class
+defs.h        Declares all the constants and enum stuff
+
+Other Files
+Makefile compiles and links the program and provides the clean and also Readme is this one
+
+Data Files
+None
+
+Compilation
+In the directory containing the program files, run:
+
+    make
+
+Launching
+Run the program with:
+
+    ./a2
+
+Cleaning
+To remove the .o files and a2, run:
+
+    make clean
