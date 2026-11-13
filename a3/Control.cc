@@ -14,13 +14,19 @@ void Control::launch() {
 
     switch (choice) {
     case 1:
-      telco_->printFrequent(SubscriberType::C_SENDER);
+      telco_->printMessages();
       break;
     case 2:
-      telco_->printFrequent(SubscriberType::C_RECEIVER);
+      telco_->printSubscribers();
       break;
     case 3:
-      telco_->printSubscribers();
+      telco_->printByActivity();
+      break;
+    case 4:
+      telco_->printFrequent(SubscriberType::C_SENDER);
+      break;
+    case 5:
+      telco_->printFrequent(SubscriberType::C_RECEIVER);
       break;
     }
   }

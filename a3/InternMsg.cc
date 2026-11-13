@@ -6,8 +6,15 @@ InternMsg::InternMsg(int day, int month, int year, int hours, int mins,
 
 void InternMsg::print() const {
   Msg::print();
+  std::cout << " I-Msg From: " << src();
+  std::cout << " To: " << dest();
+  std::cout << std::endl;
+}
+
+void InternMsg::printSimple() const {
+  Msg::printSimple();
   std::cout << ":  From: " << src();
-  std::cout << "  To: " << dest();
+  std::cout << " To: " << dest();
   std::cout << std::endl;
 }
 

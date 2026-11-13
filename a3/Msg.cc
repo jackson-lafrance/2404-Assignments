@@ -17,12 +17,15 @@ bool Msg::greaterThan(Msg *msg) const {
 
 void Msg::print() const {
   date_->print();
+  std::cout << "  ";
+  time_->print();
+}
+
+void Msg::printSimple() const {
+  date_->print();
   std::cout << " @ ";
   time_->print();
 }
 
-// if these are going to be overriden anyways why would we implement them here
-// since theres no actual src_ or dest_ in our class this means i cant make the
-// function return a const reference and we have to return a copy of a string
-std::string Msg::src() const { return ""; };
+std::string Msg::src() const { return ""; }
 std::string Msg::dest() const { return ""; };

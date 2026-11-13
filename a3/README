@@ -1,50 +1,53 @@
-COMP2404 Assignment 2 - Telco Message Manager
+COMP 2404 Assignment 3 - Telco Message Manager
 
 Author
 Jackson Lafrance
 
 Purpose
-This program manages subscribers and their incoming and outgoing text messages for a telephone company.
+This program manages subscribers and text messages for a telephone company. It stores subscribers in an array collection and messages in a doubly linked list. The program can print messages, print subscribers and order subscribers by message activity
 
 Source Files
 Control.cc     Implements the Control class
 Date.cc        Implements the Date class
+ExternMsg.cc   Implements the ExternMsg class
+InternMsg.cc   Implements the InternMsg class
 Msg.cc         Implements the Msg class
-MsgArray.cc    Implements the MsgArray class
+MsgList.cc     Implements the MsgList class
+SubArray.cc    Implements the SubArray class
 Subscriber.cc  Implements the Subscriber class
 Telco.cc       Implements the Telco class
 Time.cc        Implements the Time class
 View.cc        Implements the View class
-main.cc        Implements the main control flow and the provided sorting stuff
+main.cc        Implements main() and selectionSort()
 
 Header Files
-Control.h     Declares the Control class
-Date.h        Declares the Date class
-Msg.h         Declares the Msg class
-MsgArray.h    Declares the MsgArray class
-Subscriber.h Declares the Subscriber class
-Telco.h       Declares the Telco class
-Time.h        Declares the Time class
-View.h        Declares the View class
-defs.h        Declares all the constants and enum stuff
-
-Other Files
-Makefile compiles and links the program and provides the clean and also Readme is this one
+Control.h      Declares the Control class
+Date.h         Declares the Date class
+defs.h         Declares constants, enums, and selectionSort()
+ExternMsg.h    Declares the ExternMsg class
+InternMsg.h    Declares the InternMsg class
+Msg.h          Declares the Msg class
+MsgList.h      Declares the MsgList class
+SubArray.h     Declares the SubArray class
+Subscriber.h   Declares the Subscriber class
+Telco.h        Declares the Telco class
+Time.h         Declares the Time class
+View.h         Declares the View class
 
 Data Files
 None
 
 Compilation
-In the directory containing the program files, run:
+In the directory containing the program files run:
 
     make
 
 Launching
 Run the program with:
 
-    ./a2
+    ./a3
 
 Cleaning
-To remove the .o files and a2, run:
+To remove the object files and executable run:
 
     make clean

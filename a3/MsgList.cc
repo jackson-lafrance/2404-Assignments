@@ -60,11 +60,36 @@ void MsgList::add(Msg *msg) {
   ++size_;
 }
 
-void MsgList::copySubset(const std::string &phoneNum, MsgList &origList) {
+void MsgList::copySubset(const std::string &phoneNum,
+                         const MsgList &origList) {
   Node *current = origList.head_;
 
   while (current != nullptr) {
     if (current->data_->src() == phoneNum || current->data_->dest() == phoneNum)
+      add(current->data_);
+
+    current = current->next_;
+  }
+}
+
+void MsgList::copySources(const std::string &phoneNum,
+                          const MsgList &origList) {
+  Node *current = origList.head_;
+
+  while (current != nullptr) {
+    if (current->data_->src() == phoneNum)
+      add(current->data_);
+
+    current = current->next_;
+  }
+}
+
+void MsgList::copyDestinations(const std::string &phoneNum,
+                               const MsgList &origList) {
+  Node *current = origList.head_;
+
+  while (current != nullptr) {
+    if (current->data_->dest() == phoneNum)
       add(current->data_);
 
     current = current->next_;
@@ -87,8 +112,21 @@ void MsgList::cleanup() {
   size_ = 0;
 }
 
-void MsgList::print() {
+void MsgList::printSimple() const {
+  Node *current = head_;
+
+  while (current != nullptr) {
+    current->data_->printSimple();
+    current = current->next_;
+  }
+}
+
+void MsgList::print() const {
+  std::cout << "FORWARD:" << std::endl;
+
   if (head_ == nullptr) {
+    std::cout << "No messages" << std::endl;
+    std::cout << "BACKWARD:" << std::endl;
     std::cout << "No messages" << std::endl;
     return;
   }
@@ -101,6 +139,7 @@ void MsgList::print() {
     current = current->next_;
   }
 
+  std::cout << "BACKWARD:" << std::endl;
   while (current != nullptr) {
     current->data_->print();
     if (current->prev_ == nullptr)

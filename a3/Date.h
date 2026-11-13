@@ -26,6 +26,9 @@ public:
   ~Date();
   void setDate(int, int, int);
   void print();
+  // being allowed to use std::tie would be good here :(
+  // the cpp standard library has so many helpful functions whats the point in
+  // programming in the language if we cant even use what its good for
   bool greaterThan(const Date *d);
   bool equals(const Date *d);
 

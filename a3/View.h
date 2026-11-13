@@ -19,7 +19,7 @@
 class View {
 public:
   void showMenu(int &);
-  void printStr(std::string);
+  void printStr(const std::string &);
   void readInt(int &);
   void readStr(std::string &);
 };

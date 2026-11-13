@@ -1,21 +1,14 @@
 #include "Subscriber.h"
-#include <string>
 #include <iostream>
+#include <string>
 
-Subscriber::Subscriber(const std::string &phoneNum) : phoneNum_(phoneNum) {}
+std::size_t Subscriber::nextId = 2001;
+
+Subscriber::Subscriber(const std::string &phoneNum)
+    : phoneNum_(phoneNum), id_(nextId++) {}
 
 const std::string &Subscriber::phoneNum() const { return phoneNum_; }
-MsgArray &Subscriber::inc() { return inc_; }
-MsgArray &Subscriber::out() { return out_; }
-
-void Subscriber::addIncoming(Msg *msg) { inc_.add(msg); }
-
-void Subscriber::addOutgoing(Msg *msg) { out_.add(msg); }
 
 void Subscriber::print() const {
-  std::cout << "Subscriber " << phoneNum_ << ":" << std::endl;
-
-  MsgArray tmp(inc_);
-  tmp.add(out_);
-  tmp.print();
+  std::cout << "Subscriber :: " << id_ << " :: " << phoneNum_ << std::endl;
 }

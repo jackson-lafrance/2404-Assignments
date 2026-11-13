@@ -1,3 +1,18 @@
+/*
+ * Class: ExternMsg
+ * Purpose: Represents a message between a subscriber and a non-subscriber.
+ *
+ * Data members:
+ *   src_  - Source phone number
+ *   dest_ - Destination phone number
+ *
+ * Member functions:
+ *   ExternMsg() - Initializes the message and phone numbers
+ *   src()      - Returns the source phone number
+ *   dest()     - Returns the destination phone number
+ *   print()       - Prints the message and phone numbers
+ *   printSimple() - Prints the message in the frequent-message format
+ */
 #ifndef EXTERN_MSG_H
 #define EXTERN_MSG_H
 
@@ -13,7 +28,12 @@ public:
   // which makes it clear that this is the sub classes function
   virtual std::string src() const;
   virtual std::string dest() const;
+  // this is not very good and makes you have to change how msg print works
+  // if you have to call your own getters and setters from within your class's
+  // own functions it it usually means your class is too complicated
+  // so why do we have to do it? its a bad habit
   virtual void print() const;
+  virtual void printSimple() const;
 
 private:
   std::string src_;
