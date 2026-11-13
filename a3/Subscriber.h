@@ -1,6 +1,7 @@
 /*
  * Class: Subscriber
- * Purpose: Represents one telco subscriber and their incoming and outgoing messages
+ * Purpose: Represents one telco subscriber and their incoming and outgoing
+ * messages
  *
  * Data members:
  *   phoneNum_ - Phone number belonging to the subscriber
@@ -25,6 +26,7 @@
 
 class Subscriber {
 public:
+  static std::size_t nextId;
   Subscriber(const std::string &phoneNum = "613-716-4222");
   void addIncoming(Msg *msg);
   void addOutgoing(Msg *msg);
